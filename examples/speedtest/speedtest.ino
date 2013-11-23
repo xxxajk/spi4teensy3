@@ -49,15 +49,19 @@ void setup() {
         spi4teensy3::init(); // full speed, cpol 0, cpha 0
         while (!Serial);
         printf_P(PSTR("\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStart\r\n"));
+        Serial.flush();
+        delay(2);
         start = millis();
+        while(start == millis());
         for (; ii > 0LU; ii--) {
                 spi4teensy3::send(My_Buff_x, mbxs);
         }
 
         end = millis();
-        wt = end - start;
-        printf_P(PSTR("Time to write 10485760 bytes: %lu ms (%lu sec) \r\n"), wt, (500 + wt) / 1000UL);
 
+        wt = (end - start) - 1;
+        printf_P(PSTR("Time to write 10485760 bytes: %lu ms (%lu sec) \r\n"), wt, (500 + wt) / 1000UL);
+        printf_P(PSTR("%f Bytes/sec\r\n"), (10485760.0/wt));
 }
 
 void loop() {
