@@ -61,7 +61,8 @@ void setup() {
 
         wt = (end - start) - 1;
         printf_P(PSTR("Time to write 10485760 bytes: %lu ms (%lu sec) \r\n"), wt, (500 + wt) / 1000UL);
-        printf_P(PSTR("%f Bytes/sec\r\n"), (10485760.0/wt));
+        float bpms = 10485760.0/wt;
+        printf_P(PSTR("%f Bytes/msec\r\n%f Bytes/sec\r\n"), bpms, bpms*1000);
 }
 
 void loop() {
