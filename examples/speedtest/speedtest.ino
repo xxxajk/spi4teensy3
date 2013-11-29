@@ -52,7 +52,7 @@ void setup() {
         Serial.flush();
         delay(2);
         start = millis();
-        while(start == millis());
+        while (start == millis());
         for (; ii > 0LU; ii--) {
                 spi4teensy3::send(My_Buff_x, mbxs);
         }
@@ -61,8 +61,8 @@ void setup() {
 
         wt = (end - start) - 1;
         printf_P(PSTR("Time to write 10485760 bytes: %lu ms (%lu sec) \r\n"), wt, (500 + wt) / 1000UL);
-        float bpms = 10485760.0/wt;
-        printf_P(PSTR("%f Bytes/msec\r\n%f Bytes/sec\r\n"), bpms, bpms*1000);
+        float bpms = 10485760.0 / wt;
+        printf_P(PSTR("%f Bytes/msec\r\n%f Bytes/sec\r\n"), bpms, bpms * 1000);
 }
 
 void loop() {
