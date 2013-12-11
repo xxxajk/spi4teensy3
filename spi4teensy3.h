@@ -10,7 +10,7 @@
 #if defined(__MK20DX128__) || defined(__MK20DX256__)
 #ifdef __MK20DX128__
 #include <mk20dx128.h>
-else
+#else
 #include <mk20dx256.h>
 #endif
 #include <core_pins.h>
