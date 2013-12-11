@@ -7,8 +7,12 @@
 
 #ifndef SPI4TEENSY3_H
 #define	SPI4TEENSY3_H
+#if defined(__MK20DX128__) || defined(__MK20DX256__)
 #ifdef __MK20DX128__
 #include <mk20dx128.h>
+else
+#include <mk20dx256.h>
+#endif
 #include <core_pins.h>
 #include <sys/types.h>
 
@@ -38,6 +42,6 @@ namespace spi4teensy3 {
         //uint32_t ctar1;
         void updatectars();
 };
-#endif /* __MK20DX128__ */
+#endif /* __MK20DX128__ || __MK20DX256__ */
 #endif	/* SPI4TEENSY3_H */
 

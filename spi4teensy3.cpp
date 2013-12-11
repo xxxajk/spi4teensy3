@@ -5,7 +5,7 @@
  * Created on November 21, 2013, 10:54 AM
  */
 
-#ifdef __MK20DX128__
+#if defined(__MK20DX128__) || defined(__MK20DX256__)
 #include "spi4teensy3.h"
 
 namespace spi4teensy3 {
