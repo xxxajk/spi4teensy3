@@ -8,11 +8,7 @@
 #ifndef SPI4TEENSY3_H
 #define	SPI4TEENSY3_H
 #if defined(__MK20DX128__) || defined(__MK20DX256__)
-#ifdef __MK20DX128__
-#include <mk20dx128.h>
-#else
-#include <mk20dx256.h>
-#endif
+#include <mk20dx128.h> // same header for Teensy 3.0 & 3.1
 #include <core_pins.h>
 #include <sys/types.h>
 
