@@ -25,7 +25,7 @@ namespace spi4teensy3 {
                 ctar1 = ctar0;
                 ctar0 |= SPI_CTAR_FMSZ(7);
                 ctar1 |= SPI_CTAR_FMSZ(15);
-                SPI0_MCR = SPI_MCR_MSTR;
+                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_PCSIS(0x1F);
                 SPI0_MCR |= SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF;
                 updatectars();
         }
@@ -105,7 +105,7 @@ namespace spi4teensy3 {
 
         void send(uint8_t b) {
                 // clear any data in RX/TX FIFOs, and be certain we are in master mode.
-                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF;
+                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF | SPI_MCR_PCSIS(0x1F);
                 SPI0_SR = SPI_SR_TCF;
                 SPI0_PUSHR = SPI_PUSHR_CONT | b;
                 while (!(SPI0_SR & SPI_SR_TCF));
@@ -126,7 +126,7 @@ namespace spi4teensy3 {
                         n--;
                 }
                 // clear any data in RX/TX FIFOs, and be certain we are in master mode.
-                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF;
+                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF | SPI_MCR_PCSIS(0x1F);
                 // initial number of words to push into TX FIFO
                 nf = n / 2 < 3 ? n / 2 : 3;
                 // limit for pushing data into TX fifo
@@ -156,7 +156,7 @@ namespace spi4teensy3 {
 
         uint8_t receive() {
                 // clear any data in RX/TX FIFOs, and be certain we are in master mode.
-                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF;
+                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF | SPI_MCR_PCSIS(0x1F);
                 SPI0_SR = SPI_SR_TCF;
                 SPI0_PUSHR = SPI_PUSHR_CONT | 0xFF;
                 while (!(SPI0_SR & SPI_SR_TCF));
@@ -175,7 +175,7 @@ namespace spi4teensy3 {
                 }
 
                 // clear any data in RX/TX FIFOs, and be certain we are in master mode.
-                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF;
+                SPI0_MCR = SPI_MCR_MSTR | SPI_MCR_CLR_RXF | SPI_MCR_CLR_TXF | SPI_MCR_PCSIS(0x1F);
                 // initial number of words to push into TX FIFO
                 int nf = n / 2 < 3 ? n / 2 : 3;
                 for (i = 0; i < nf; i++) {
