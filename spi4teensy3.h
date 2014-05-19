@@ -22,6 +22,11 @@
 #define SPI_PUSHR_CTAS(n) (((n) & 7) << 28)
 #endif
 
+#define SPI4TEENSY3_MODE_0 0, 0
+#define SPI4TEENSY3_MODE_1 0, 1
+#define SPI4TEENSY3_MODE_2 1, 0
+#define SPI4TEENSY3_MODE_3 1, 1
+#define MODE_TO_SPI4TEENSY3_MODE(x) (x & 1), (x&2)
 
 namespace spi4teensy3 {
         void init();
@@ -33,10 +38,7 @@ namespace spi4teensy3 {
         uint8_t receive();
         void receive(void *bufr, size_t n);
 
-        // cached ctars for speed
-        //uint32_t ctar0;
-        //uint32_t ctar1;
-        void updatectars();
+        //void updatectars();
 };
 #endif /* __MK20DX128__ || __MK20DX256__ */
 #endif	/* SPI4TEENSY3_H */
