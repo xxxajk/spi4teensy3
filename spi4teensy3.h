@@ -5,10 +5,14 @@
  * Created on November 21, 2013, 10:54 AM
  */
 
+
+// TO-DO: KINETISKL
+
 #ifndef SPI4TEENSY3_H
 #define	SPI4TEENSY3_H
-#if defined(__MK20DX128__) || defined(__MK20DX256__)
-#include <mk20dx128.h> // same header for Teensy 3.0 & 3.1
+#if defined(__arm__) && defined(TEENSYDUINO)
+#include <mk20dx128.h> // same header for all Teensy
+#if defined(KINETISK)
 #include <core_pins.h>
 #include <sys/types.h>
 
@@ -40,6 +44,7 @@ namespace spi4teensy3 {
 
         //void updatectars();
 };
-#endif /* __MK20DX128__ || __MK20DX256__ */
+#endif /* defined(KINETISK) */
+#endif /* defined(__arm__) && defined(TEENSYDUINO) && defined(KINETISK) */
 #endif	/* SPI4TEENSY3_H */
 

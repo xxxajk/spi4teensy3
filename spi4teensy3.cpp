@@ -5,8 +5,11 @@
  * Created on November 21, 2013, 10:54 AM
  */
 
-#if defined(__MK20DX128__) || defined(__MK20DX256__)
+// TO-DO: KINETISKL
+
+#if defined(__arm__) && defined(TEENSYDUINO)
 #include "spi4teensy3.h"
+#if defined(KINETISK)
 /**
  * spi4teesny3 is a library for the freescale microcontroller
  * on a teensy 3.x from http://pjrc.com
@@ -304,4 +307,5 @@ namespace spi4teensy3 {
 
         }
 }
+#endif
 #endif

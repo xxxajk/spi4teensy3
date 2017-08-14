@@ -9,18 +9,18 @@ extern "C" {
 
         int _write(int fd, const char *ptr, int len) {
                 int j;
-                for (j = 0; j < len; j++) {
-                        if (fd == 1)
+                for(j = 0; j < len; j++) {
+                        if(fd == 1)
                                 Serial.write(*ptr++);
-                        else if (fd == 2)
+                        else if(fd == 2)
                                 Serial3.write(*ptr++);
                 }
                 return len;
         }
 
         int _read(int fd, char *ptr, int len) {
-                if (len > 0 && fd == 0) {
-                        while (!Serial.available());
+                if(len > 0 && fd == 0) {
+                        while(!Serial.available());
                         *ptr = Serial.read();
                         return 1;
                 }
@@ -47,13 +47,13 @@ void setup() {
         uint32_t end;
         uint32_t ii = 10485760LU / mbxs;
         spi4teensy3::init(); // full speed, cpol 0, cpha 0
-        while (!Serial);
+        while(!Serial);
         printf_P(PSTR("\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStart\r\n"));
         Serial.flush();
         delay(2);
         start = millis();
-        while (start == millis());
-        for (; ii > 0LU; ii--) {
+        while(start == millis());
+        for(; ii > 0LU; ii--) {
                 spi4teensy3::send(My_Buff_x, mbxs);
         }
 
