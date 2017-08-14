@@ -1,0 +1,12 @@
+{
+  "name": "SPI4Teensy3",
+  "keywords": "spi",
+  "description": "Faster SPI library optimized for the Teensy 3.0",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/xxxajk/spi4teensy3.git"
+  },
+  "frameworks": "arduino",
+  "platforms": "teensy"
+}
